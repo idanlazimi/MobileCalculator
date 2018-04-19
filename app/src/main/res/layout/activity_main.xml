@@ -1,18 +1,235 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainRelView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.dell.mobilecalculator_ex.MainActivity">
+    android:background="#fff"
+    tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:id="@+id/resultWindow"
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/resultView"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="#fff"
+            android:text="0"
+            android:textSize="50sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/opWindow"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_below="@+id/resultWindow"
 
-</android.support.constraint.ConstraintLayout>
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/opView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/btnsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/btnsLine1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/digit1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="90dp"
+                android:background="@drawable/button_shape"
+                android:text="1"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/digit2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="90dp"
+                android:background="@drawable/button_shape"
+                android:text="2"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/digit3"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="90dp"
+                android:background="@drawable/button_shape"
+                android:text="3"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/operAc"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="90dp"
+                android:background="@drawable/op_buttons"
+                android:text="AC"
+                android:textColor="@color/white"
+                android:textSize="40sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnsLine2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/digit4"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="90dp"
+                android:background="@drawable/button_shape"
+                android:text="4"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/digit5"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="90dp"
+                android:background="@drawable/button_shape"
+                android:text="5"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/digit6"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="90dp"
+                android:background="@drawable/button_shape"
+                android:text="6"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/operPlus"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="90dp"
+                android:background="@drawable/op_buttons"
+                android:text="+"
+                android:textColor="@color/white"
+                android:textSize="40sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnsLine3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/digit7"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="90dp"
+                android:background="@drawable/button_shape"
+                android:text="7"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/digit8"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="90dp"
+                android:background="@drawable/button_shape"
+                android:text="8"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/digit9"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="90dp"
+                android:background="@drawable/button_shape"
+                android:text="9"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/operMin"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="90dp"
+                android:background="@drawable/op_buttons"
+                android:text="-"
+                android:textColor="@color/white"
+                android:textSize="40sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnsLine4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/operDiv"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="90dp"
+                android:background="@drawable/op_buttons"
+                android:text="/"
+                android:textColor="@color/white"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/digit0"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="90dp"
+                android:background="@drawable/button_shape"
+                android:text="0"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/operMult"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="90dp"
+                android:background="@drawable/op_buttons"
+                android:text="*"
+                android:textColor="@color/white"
+                android:textSize="40sp" />
+
+            <Button
+                android:id="@+id/operEq"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="90dp"
+                android:background="@drawable/op_buttons"
+                android:text="="
+                android:textColor="@color/white"
+                android:textSize="40sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
