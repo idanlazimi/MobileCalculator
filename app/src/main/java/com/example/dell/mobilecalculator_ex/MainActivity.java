@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Operation op = Operation.DEAD;
     private boolean isOperatorChosen = false;
+    private boolean resIsSet = false;
 
     private TextView resultField;
     private TextView opDisplay ;
@@ -70,7 +71,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Button btn = (Button)view;
             Double pressedVal = Double.parseDouble(btn.getText().toString());
 
-            if( isOperatorChosen ) {
+            // if isOperatorChosen == true, second operand comes into play
+            if(isOperatorChosen || resIsSet) {
                 arg2 = (arg2 * 10) + pressedVal;
                 resultField.setText(arg2.toString());
             }
@@ -87,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             switch(chodenOperatorID){
                 case R.id.operPlus:
                     op = Operation.PLUS;
-                    Toast.makeText(getBaseContext(), "op chaned to PLUS", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getBaseContext(), "op chaned to PLUS", Toast.LENGTH_LONG).show();
                     opDisplay.setText( arg1.toString() + " +");
                     break;
                 case R.id.operMin:
@@ -100,10 +102,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 case R.id.operDiv:
                     op = Operation.DIV;
-                    opDisplay.setText( arg1.toString() + " \"");
+                    opDisplay.setText( arg1.toString() + " /");
                     break;
                 case R.id.operAc:
                     reset();
+                    break;
                 case R.id.operEq:
                     calcAndDisplay();
                     break;
@@ -118,30 +121,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         arg1 = arg2 = 0.0;
         isOperatorChosen = false;
-        resultField.setText("");
+        resIsSet = false;
+        resultField.setText("0.0");
         opDisplay.setText("");
+        op = Operation.DEAD;
+        result = 0.0;
+
     }
 
     private void calcAndDisplay() {
 
-        Double res = 0.0;
+
         switch(op) {
             case PLUS:
-                Toast.makeText(this, "arg1:" + arg1.toString() + " arg2:" + arg2.toString(), Toast.LENGTH_LONG).show();
-                res = arg1 + arg2;
+                //Toast.makeText(this, "arg1:" + arg1.toString() + " arg2:" + arg2.toString(), Toast.LENGTH_LONG).show();
+                result = arg1 + arg2;
                 break;
             case MINUS:
-                res = arg1 - arg2;
+                result = arg1 - arg2;
                 break;
             case MUL:
-                res = arg1*arg2;
+                result = arg1*arg2;
                 break;
             case DIV:
-                if ( arg2 != 0 ) res = arg1/arg2;
+                if ( arg2 != 0 ) result = arg1/arg2;
+                else {
+                    Toast.makeText(this, "Cannot Divide by 0!", Toast.LENGTH_LONG).show();
+                    reset();
+                    return;
+                }
                 break;
 
         }
-        resultField.setText(res.toString());
+
+        //while AC is not pressed, result acts as first operand to be computed with arg2
+        arg1 = result;
+        arg2 = 0.0;
+        resIsSet = true;
+        opDisplay.setText("");
+        resultField.setText(result.toString());
     }
 
     private boolean isDigit(View view){
